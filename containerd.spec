@@ -38,10 +38,10 @@ for cmd in cmd/{containerd*,ctr}; do
 done
 
 %install
-install -v -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
-install -v -D -t %{buildroot}%{_unitdir} %{goname}.service
-install -v -D -t %{buildroot}%{_sysconfdir}/%{goname}/config.toml %{SOURCE1}
-install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
+install -v -p -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
+install -v -p -D -t %{buildroot}%{_unitdir} %{goname}.service
+install -v -p -D -t %{buildroot}%{_sysconfdir}/%{goname}/config.toml %{SOURCE1}
+install -v -d %{buildroot}%{_sharedstatedir}/%{goname}
 
 %files
 %license LICENSE
@@ -50,7 +50,6 @@ install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
 %{_sysconfdir}/%{goname}
 %config(noreplace) %{_sysconfdir}/%{goname}/config.toml
 %{_sharedstatedir}/%{goname}
-%{_sharedstatedir}/%{goname}/*
 
 %changelog
 * Tue Feb 21 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.18-1
