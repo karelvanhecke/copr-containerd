@@ -13,6 +13,7 @@ Summary: An open and reliable container runtime
 License: Apache-2.0
 URL: %{gourl}
 Source0: %{gosource}
+Source1: config.toml
 
 Patch0: systemd-service-bin-path.patch
 
@@ -39,7 +40,7 @@ done
 %install
 install -v -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
 install -v -D -t %{buildroot}%{_unitdir} %{gobuilddir}/%{goname}.service
-install -v -d %{buildroot}%{_sysconfdir}/%{goname}
+install -v -D -t %{buildroot}%{_sysconfdir}/%{goname}/config.toml %{SOURCE1}
 install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
 
 %files
@@ -47,7 +48,7 @@ install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
 %{_bindir}/*
 %{_unitdir}/%{goname}.service
 %{_sysconfdir}/%{goname}
-%config(noreplace) %{_sysconfdir}/%{goname}/*
+%config(noreplace) %{_sysconfdir}/%{goname}/config.toml
 %{_sharedstatedir}/%{goname}
 %{_sharedstatedir}/%{goname}/*
 
