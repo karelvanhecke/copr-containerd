@@ -40,8 +40,7 @@ done
 %install
 install -v -p -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
 install -v -p -m 644 -D -t %{buildroot}%{_unitdir} %{goname}.service
-install -v -p -m 640 -D -t %{buildroot}%{_sysconfdir}/%{goname}/config.toml %{SOURCE1}
-install -v -m 750 -d %{buildroot}%{_sharedstatedir}/%{goname}
+install -v -p -m 640 -D -t %{buildroot}%{_sysconfdir}/%{goname} %{SOURCE1}
 
 %files
 %license LICENSE
@@ -49,7 +48,6 @@ install -v -m 750 -d %{buildroot}%{_sharedstatedir}/%{goname}
 %{_unitdir}/%{goname}.service
 %{_sysconfdir}/%{goname}
 %config(noreplace) %{_sysconfdir}/%{goname}/config.toml
-%{_sharedstatedir}/%{goname}
 
 %changelog
 * Tue Feb 21 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.18-1
