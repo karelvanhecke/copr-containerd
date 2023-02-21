@@ -39,7 +39,7 @@ done
 
 %install
 install -v -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
-install -v -D -t %{buildroot}%{_unitdir} %{gobuilddir}/%{goname}.service
+install -v -D -t %{buildroot}%{_unitdir} %{goname}.service
 install -v -D -t %{buildroot}%{_sysconfdir}/%{goname}/config.toml %{SOURCE1}
 install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
 
