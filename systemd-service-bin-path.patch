@@ -1,11 +1,13 @@
---- a/containerd.service	2023-02-21 16:14:41.843267800 +0100
-+++ b/containerd.service	2023-02-21 16:15:09.963315000 +0100
-@@ -21,7 +21,7 @@
- #uncomment to enable the experimental sbservice (sandboxed) version of containerd/cri integration
- #Environment="ENABLE_CRI_SANDBOXES=sandboxed"
+diff --git a/containerd.service b/containerd.service
+index e4c082b3a..e1c80c118 100644
+--- a/containerd.service
++++ b/containerd.service
+@@ -19,7 +19,7 @@ After=network.target local-fs.target
+
+ [Service]
  ExecStartPre=-/sbin/modprobe overlay
 -ExecStart=/usr/local/bin/containerd
 +ExecStart=/usr/bin/containerd
- 
+
  Type=notify
  Delegate=yes
