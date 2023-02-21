@@ -37,11 +37,19 @@ for cmd in cmd/{containerd*,ctr}; do
 done
 
 %install
-install -v -D -t %{buildroot}/%{_bindir} %{gobuilddir}/bin/*
+install -v -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
+install -v -D -t %{buildroot}%{_unitdir} %{gobuilddir}/%{goname}.service
+install -v -d %{buildroot}%{_sysconfdir}/%{goname}
+install -v -d %{buildroot}%{_sharedstatedir}/%{goname}/opt
 
 %files
 %license LICENSE
 %{_bindir}/*
+%{_unitdir}/%{goname}.service
+%{_sysconfdir}/%{goname}
+%config(noreplace) %{_sysconfdir}/%{goname}/*
+%{_sharedstatedir}/%{goname}
+%{_sharedstatedir}/%{goname}/*
 
 %changelog
 * Tue Feb 21 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.18-1
