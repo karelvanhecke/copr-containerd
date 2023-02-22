@@ -33,7 +33,7 @@ export LDFLAGS="-X %{goipath}/version.Version=%{version} \
 -X %{goipath}/version.Revision=%{commit0} \
 -X %{goipath}/version.Package=%{goipath} "
 
-for cmd in cmd/{containerd*,ctr}; do
+for cmd in cmd/{%{goname}*,ctr}; do
     %gobuild -o %{gobuilddir}/bin/$(basename $cmd) %{goipath}/$cmd
 done
 
@@ -42,6 +42,15 @@ install -v -p -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
 install -v -p -m 644 -D -t %{buildroot}%{_unitdir} %{goname}.service
 install -v -m 640 -d %{buildroot}%{_sysconfdir}/%{goname}
 install -v -m 640 -t %{buildroot}%{_sysconfdir}/%{goname} %{SOURCE1}
+
+%post
+%systemd_post %{goname}.service
+
+%preun
+%systemd_preun %{goname}.service
+
+%postun
+%systemd_postun_with_restart %{goname}.service
 
 %files
 %license LICENSE
