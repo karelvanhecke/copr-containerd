@@ -47,7 +47,7 @@ chmod 640 %{buildroot}%{_sysconfdir}/%{goname}/config.toml
 %license LICENSE
 %{_bindir}/*
 %{_unitdir}/%{goname}.service
-%{_sysconfdir}/%{goname}
+%dir %{_sysconfdir}/%{goname}
 %config(noreplace) %{_sysconfdir}/%{goname}/config.toml
 
 %changelog
