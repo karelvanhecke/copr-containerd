@@ -21,7 +21,7 @@ BuildRequires: systemd-rpm-macros
 Requires: runc
 
 %description
-%{Summary}
+%{summary}
 
 %prep
 %goprep -k
