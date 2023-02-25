@@ -29,7 +29,7 @@ Requires: runc
 
 %build
 export BUILDTAGS="no_btrfs"
-export LDFLAGS="-X %{goipath}/version.Version=%{version} \
+export LDFLAGS="-X %{goipath}/version.Version=v%{version} \
 -X %{goipath}/version.Revision=%{commit0} \
 -X %{goipath}/version.Package=%{goipath} "
 
