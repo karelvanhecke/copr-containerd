@@ -40,7 +40,7 @@ done
 %install
 install -v -p -D -t %{buildroot}%{_bindir} %{gobuilddir}/bin/*
 install -v -p -m 644 -D -t %{buildroot}%{_unitdir} %{goname}.service
-install -v -m 640 -d %{buildroot}%{_sysconfdir}/%{goname}
+install -v -m 750 -d %{buildroot}%{_sysconfdir}/%{goname}
 install -v -m 640 -t %{buildroot}%{_sysconfdir}/%{goname} %{SOURCE1}
 
 %post
