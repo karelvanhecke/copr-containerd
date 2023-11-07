@@ -1,5 +1,5 @@
 %global goipath github.com/containerd/containerd
-Version: 1.6.18
+Version: 1.6.24
 %global goname containerd
 
 %gometa
@@ -60,5 +60,7 @@ install -v -m 640 -t %{buildroot}%{_sysconfdir}/%{goname} %{SOURCE1}
 %config(noreplace) %{_sysconfdir}/%{goname}/config.toml
 
 %changelog
+* Tue Nov 07 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.24-1
+- Bump containerd version to v1.6.24
 * Tue Feb 21 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.18-1
 - Initial build
