@@ -1,4 +1,4 @@
-%define %gobuild(o:) \
+%define gobuild(o:) \
 GOPPC64=power9 GOAMD64=v2 CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2 -fstack-protector-all" go build -compiler gc -buildmode pie -tags="rpm_crashtraceback libtrust_openssl ${BUILDTAGS:-}" -ldflags "-linkmode=external -compressdwarf=false ${LDFLAGS:-} -B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \\n') -extldflags '%__global_ldflags'" -a -v -x %{?**};\
 
 %global goipath github.com/containerd/containerd
