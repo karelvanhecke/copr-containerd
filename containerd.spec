@@ -2,12 +2,12 @@
 CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2 -fstack-protector-all" go build -compiler gc -buildmode pie -tags="rpm_crashtraceback libtrust_openssl ${BUILDTAGS:-}" -ldflags "-linkmode=external -compressdwarf=false ${LDFLAGS:-} -B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \\n') -extldflags '%__global_ldflags'" -a -v -x %{?**};\
 
 %global goipath github.com/containerd/containerd
-Version: 1.6.24
+Version: 1.6.28
 %global goname containerd
 
 %gometa
 
-%global commit0 2456e983eb9e37e47538f59ea18f2043c9a73640
+%global commit0 ae07eda36dd25f8a1b98dfbf587313b99c0190bb
 
 Name: %{goname}
 Release: 1%{?dist}
@@ -63,6 +63,8 @@ install -v -m 640 -t %{buildroot}%{_sysconfdir}/%{goname} %{SOURCE1}
 %config(noreplace) %{_sysconfdir}/%{goname}/config.toml
 
 %changelog
+* Mon Feb 05 2024 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.28-1
+- Bump containerd version to v1.6.28
 * Tue Nov 07 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.24-1
 - Bump containerd version to v1.6.24
 * Tue Feb 21 2023 Karel Van Hecke <copr@karelvanhecke.com> - 1.6.18-1
